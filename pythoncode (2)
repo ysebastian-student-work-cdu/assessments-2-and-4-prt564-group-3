@@ -88,17 +88,7 @@ dfTtraditional_outlier=  pd.DataFrame()
 df = pd.read_csv(r"C:\temp\db4.csv")
 #could not get the whole Dataframe clean function  to work!!!
 
-##REMOVE NULLS
-##PER COLUMN solution works better than a whole DATAFRAME null removal!
-#df['Elevation'].fillna(      int(df['Elevation'].mean()), inplace=True)
-#df['Drainage Area'].fillna(  int(df['Drainage Area'].mean()), inplace=True)
-#df['Surface Area'].fillna(   int(df['Surface Area'].mean()), inplace=True)
-#df['Max Depth'].fillna(      int(df['Max Depth'].mean()), inplace=True)
-#df['RF'].fillna(  int(df['RF'].mean()), inplace=True)
-#df['FR'].fillna(  int(df['FR'].mean()), inplace=True)
-#df['Dam'].fillna( int(df['Dam'].mean()), inplace=True)
-#df['RT'].fillna(  int(df['RT'].mean()), inplace=True)
-#df['RS'].fillna(  int(df['RS'].mean()), inplace=True)
+
 
 # mean imputation
 #df.fillna(df.mean(), inplace=True)

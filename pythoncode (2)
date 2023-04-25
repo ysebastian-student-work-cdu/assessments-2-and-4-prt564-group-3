@@ -140,15 +140,7 @@ fig7.show()
 plt.show()
 ###
 
-###DUE TO THE OUTLIERS in the MERCURY
-#i removed the following 4 rows
-#Reservoir	   Fish	Mercury	Elevation	Drainage Area	Surface Area	Max Depth	RF	FR	Dam	RT	RS	C1	C2	C3	C4	C5	C6
-#Parker Lake	4	2.5	        50	1	35	22	0.63	3.9	1	2	1	1	0	0	0	0	0
-#Fox Creek   	6	1.8	       1154	19	201	42	0.62	0.9	NA	1	1	0	1	0	0	0	0
-#Two Dam Creek	3	1.25	306	14	290	41	0.51	3.7	0	2	1	0	1	0	0	0	0
-#Temple Creek	5	1.22	276	3	210	38	0.53	1.4	0	2	1	1	0	0	0	0	0
 
-#I MANUALLY CHANGED THE RESOURVOUR NAMES TO SEQUENTIAL NUMBERS (1,2,3,4...etc)
 
 #BUILD AND EVALUATE A LINEAR REGRESSION MODEL
 

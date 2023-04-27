@@ -18,10 +18,9 @@ In this project, based on the file "Databreaches650" provided, our group would l
 
 # Analysis 
 All analysis files can be found in the 'analysis' folder and should all be capable of running independently. The general structure of the files as follows: 
-- Data mining
+- Data Clean
 - Data transformation
 - Linear Regression
-- 
 - Output
 - Note: running the analysis files will generate files in the 'results' and 'charts' folders as part of their operation.
 

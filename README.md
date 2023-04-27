@@ -27,9 +27,9 @@ All analysis files can be found in the 'analysis' folder and should all be capab
 
 # Folder Structure
 
-- Analysis
-
 - Datasets: folder contains the datasets provided, additional dataset
+
+- Data preparation
 
 - Notes: general notes taken and observed for each task during the analysis.
 

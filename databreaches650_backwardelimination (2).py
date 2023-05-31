@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 
 
 # Read dataset into a DataFrame
-df = pd.read_csv("boston.csv")
+df = pd.read_csv("databreaches650.csv")
 
 
 # Separate explanatory variables (x) from the response variable (y)
@@ -13,18 +13,14 @@ x = df.iloc[:,:-1]
 y = df.iloc[:,-1]
 
 # Drop each variable in the following order and rebuild the model in stepwise manner
-x.drop(["AGE"], axis=1, inplace=True)
-x.drop(["INDUS"], axis=1, inplace=True)
-x.drop(["CHAS"], axis=1, inplace=True)
-x.drop(["CRIM"], axis=1, inplace=True)
-x.drop(["TAX"], axis=1, inplace=True)
-x.drop(["RAD"], axis=1, inplace=True)
-x.drop(["ZN"], axis=1, inplace=True)
-x.drop(["LSTAT"], axis=1, inplace=True)
-x.drop(["PTRATIO"], axis=1, inplace=True)
-x.drop(["DIS"], axis=1, inplace=True)
-x.drop(["RM"], axis=1, inplace=True)
-x.drop(["NOX"], axis=1, inplace=True)
+x.drop(["IsRetired"], axis=1, inplace=True)
+x.drop(["IsMalware"], axis=1, inplace=True)
+x.drop(["IsFabricated"], axis=1, inplace=True)
+x.drop(["BreachDateDayOfWeek"], axis=1, inplace=True)
+x.drop(["BreachDateMonth"], axis=1, inplace=True)
+x.drop(["IsSensitive"], axis=1, inplace=True)
+x.drop(["IsVerified"], axis=1, inplace=True)
+#x.drop(["IsSpamList"], axis=1, inplace=True)
 
 # Split dataset into 60% training and 40% test sets 
 # This step ensures that the statsmodels' model is trained on the same training set as scikit-learn's

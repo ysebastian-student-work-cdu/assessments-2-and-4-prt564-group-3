@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 
 
 # Read dataset into a DataFrame
-df = pd.read_csv("databreaches650_CSV.csv")
+df = pd.read_csv("databreaches650.csv")
 
 
 # Separate explanatory variables (x) from the response variable (y)

@@ -25,14 +25,14 @@ pca = PCA().fit(X_train)
 
 # Plot the cumulative explained variance versus number of PCA components
 plt.plot(np.cumsum(pca.explained_variance_ratio_))
-plt.xticks(range(1,13))
+plt.xticks(range(1,10))
 plt.xlabel('Number of components')
 plt.ylabel('Cumulative explained variance')
 plt.grid()
 plt.show()
 
-# Train a linear regression on PCA-transformed training data (top-5 components)
-pca = PCA(n_components=5)
+# Train a linear regression on PCA-transformed training data (top-4 components)
+pca = PCA(n_components=4)
 X_train_p = pca.fit_transform(X_train)
 
 # Compare the dimensionality of the original data vs. its dimensionality reduced version
@@ -48,6 +48,6 @@ y_pred = model.predict(X_train_p)
 
 # Get R-Squared score
 r_2 = metrics.r2_score(y_train, y_pred)
-print("Trained with 3-component PCA:")
+print("Trained with 4-component PCA:")
 print("R^2: ", r_2)
 

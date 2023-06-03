@@ -1,0 +1,42 @@
+import pandas as pd
+import statsmodels.api as sm
+
+from sklearn.model_selection import train_test_split
+
+
+# Read dataset into a DataFrame
+df = pd.read_csv("out_with_header.csv")
+
+
+# Separate explanatory variables (x) from the response variable (y)
+x = df.iloc[:,:-1]
+y = df.iloc[:,-1]
+
+# Drop each variable in the following order and rebuild the model in stepwise manner
+
+x.drop(["IsRetired"], axis=1, inplace=True)
+x.drop(["Industry"], axis=1, inplace=True)
+x.drop(["BreachDateYear"], axis=1, inplace=True)
+x.drop(["BreachDateDayOfMonth"], axis=1, inplace=True)
+x.drop(["BreachDateMonth"], axis=1, inplace=True)
+x.drop(["IsMalware"], axis=1, inplace=True)
+x.drop(["IsVerified"], axis=1, inplace=True)
+#x.drop(["country_id"], axis=1, inplace=True)
+#x.drop(["IsSensitive"], axis=1, inplace=True)
+#x.drop(["IsSpamList"], axis=1, inplace=True)
+
+# Split dataset into 60% training and 40% test sets 
+# This step ensures that the statsmodels' model is trained on the same training set as scikit-learn's
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.4, random_state=0)
+
+
+# Build a linear regression model
+X_train = sm.add_constant(X_train)  # this ensure that intercept is calculated
+model = sm.OLS(y_train,X_train).fit()
+
+
+# Print model details
+model_details = model.summary()
+print(model_details)
+
+

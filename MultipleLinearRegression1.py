@@ -7,7 +7,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn import metrics
 
 # Read dataset into a DataFrame
-df = pd.read_csv("boston.csv")
+df = pd.read_csv("databreach650.csv")
 
 """
 BUILD AND EVALUATE A LINEAR REGRESSION MODEL

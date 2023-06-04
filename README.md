@@ -26,12 +26,13 @@ All analysis files can be found in the 'analysis' folder and should all be capab
 
 # Folder Structure
 
-- Datasets: folder contains the datasets provided, additional dataset
+- Dataset: folder contains the datasets provided, additional dataset
 
-- Data preparation
+- Doc: all the supproting documents (meeting minutes and work doc for teamwork evidence)
 
-- Notes: general notes taken and observed for each task during the analysis.
+- Results: outputs
 
-- Minutes: notes taken during our meetings
+- SRC: all the codes contributed by all team members
 
 - Other: folder for extra files, such as the custom font used in the graphs
+

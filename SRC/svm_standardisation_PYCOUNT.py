@@ -16,7 +16,7 @@ import statsmodels.api as sm
 # Read dataset into a DataFrame
 
 # Read dataset into a DataFrame
-df= pd.read_csv('c:/temp/anna/out2.csv')
+df= pd.read_csv('out2.csv')
 # Separate explanatory variables (x) from the response variable (y)
 x = df.iloc[:,:-1].values
 y = df.iloc[:,-1].values

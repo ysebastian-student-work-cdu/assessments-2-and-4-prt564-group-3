@@ -1,32 +1,30 @@
-import math
 import pandas as pd
 import numpy as np
-
+import math
 import matplotlib.pyplot as plt
-import requests                    
+import requests                     
 import statsmodels.api as sm
 
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
-
 from mlxtend.feature_selection import SequentialFeatureSelector as sfs
 from mlxtend.plotting import plot_sequential_feature_selection as plot_sfs
-
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 from sklearn import preprocessing
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
 
-# read the data
 
-df =  pd.read_csv('databreaches650_prepared.csv')
-print("OPTION 1: Linear regression model with 4 features")
+#=====BEGIN WITH NEW FILE=======
 
-# Choose 4 features of 'year','isverified','issensitive','ismalware' to predict the pwncount
-x = df.iloc[:, [19,26,28,31]]
-y = df.iloc[: , [7]]
+df_wrangled =  pd.read_csv('databreaches650_wrangled.csv')
+
+print("====OPTION 1: Linear regression model with 4 SELECTION data===")
+
+x = df_wrangled.iloc[:, [19,26,28,31]]
+y = df_wrangled.iloc[: , [7]]
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.4, random_state=0)
 
 # Build a linear regression model
@@ -37,13 +35,11 @@ model = sm.OLS(y_train,X_train).fit()
 model_details = model.summary()
 print(model_details)
 
-print("Metrics with 4 variables")
-
-# Use linear regression to predict the pwncount (values of (y)) in the test set 
-x = df.iloc[:, [19,26,28,31]]
-y = df.iloc[: , [7]]
+print("===Metrics with 4 variables===")
+# Use linear regression to predict the values of (y) in the test set
+x = df_wrangled.iloc[:, [19,26,28,31]]
+y = df_wrangled.iloc[: , [7]]
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.4, random_state=0)
-
 # Build a linear regression model
 model = LinearRegression()
 
@@ -57,7 +53,6 @@ print("Coefficient: ", model.coef_)
 # Use linear regression to predict the values of (y) in the test set
 # based on the values of x in the test set
 y_pred = model.predict(X_test)
-
 # Optional: Show the predicted values of (y) next to the actual values of (y)
 #df_pred = pd.DataFrame({"Actual": y_test, "Predicted": y_pred})
 # Compute standard performance metrics of the linear regression:
@@ -75,30 +70,29 @@ rmse_norm = rmse / (y_max - y_min)
 
 # R-Squared
 r_2 = metrics.r2_score(y_test, y_pred)
-print("OPTION 1: Trained with 4 original variables :")
+print("OPTION 1: Trained with 4-component original:")
 print("R^2: ", r_2)
 
 
-# Apply PCA
+#================================================= PCA(Week-4) =======================================================
 
-# ORIGINAL: Choose 9 features to predict the pwncount 
-# compare the cumulative explained variance versus number of PCA components
-x = df.iloc[:, [17,18,19,26,27,28,29,30,31]]
+# ORIGINAL: compare the cumulative explained variance versus number of PCA components
+x = df_wrangled.iloc[:, [17,18,19,26,27,28,29,30,31]]
 #print(x)
-
-y = df.iloc[: , [7]]
+y = df_wrangled.iloc[: , [7]]
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.4, random_state=0)
+
 
 # Build the PCA on the training set (X_Train - orginal varaiable 9)
 pca = PCA().fit(X_train)
 
 # Plot the cumulative explained variance versus number of PCA components
-plt.plot(np.cumsum(pca.explained_variance_ratio_))
-plt.xticks(range(1,10))
-plt.xlabel('Number of components')
-plt.ylabel('Cumulative explained variance')
-plt.grid()
-plt.show()
+#plt.plot(np.cumsum(pca.explained_variance_ratio_))
+#plt.xticks(range(1,10))
+#plt.xlabel('Number of components')
+#plt.ylabel('Cumulative explained variance')
+#plt.grid()
+#plt.show()
 
 # Train a linear regression on PCA-transformed training data (top-4 components)
 pca = PCA(n_components=4)
@@ -120,13 +114,13 @@ r_2 = metrics.r2_score(y_train, y_pred)
 print("OPTION 2: Trained with 4-component PCA:")
 print("R^2: ", r_2)
 
-#print("Perform standardisation with 4 variables")
+#print("======Perform standardisation with 4 variables====")
 #perform standardisation
 X_train_std = StandardScaler().fit_transform(X_train)
 #build PCA
 pca = PCA(n_components=4)
 X_train_p = pca.fit_transform(X_train_std)
-#print (" PCA_X-train shape")
+#print ("==============================PCA_X-train shape =============================")
 #print(X_train.shape)
 #print(X_train_p.shape)
 
